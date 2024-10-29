@@ -206,9 +206,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\AspNetSessionController.cs" />
     <Compile Include="Controllers\PicController.cs" />
-    <Compile Include="Controllers\UserInfoController.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CatalogBrand.cs" />
     <Compile Include="Models\CatalogDBContext.cs" />
@@ -362,8 +360,6 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\AspNetSession\Index.cshtml" />
-    <Content Include="Views\UserInfo\Index.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
