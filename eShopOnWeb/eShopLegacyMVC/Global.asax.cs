@@ -1,6 +1,5 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
-using Autofac.Integration.WebApi;
 using eShopLegacyMVC.Models;
 using eShopLegacyMVC.Models.Infrastructure;
 using eShopLegacyMVC.Modules;
@@ -11,7 +10,6 @@ using System.Data.Entity;
 using System.Diagnostics;
 using System.Reflection;
 using System.Web;
-using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
@@ -27,7 +25,6 @@ namespace eShopLegacyMVC
         protected void Application_Start()
         {
             container = RegisterContainer();
-            GlobalConfiguration.Configure(WebApiConfig.Register);
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
@@ -63,7 +60,6 @@ namespace eShopLegacyMVC
 
             var thisAssembly = Assembly.GetExecutingAssembly();
             builder.RegisterControllers(thisAssembly);
-            builder.RegisterApiControllers(thisAssembly);
 
             var mockData = bool.Parse(ConfigurationManager.AppSettings["UseMockData"]);
             builder.RegisterModule(new ApplicationModule(mockData));
@@ -72,10 +68,6 @@ namespace eShopLegacyMVC
 
             // set mvc resolver
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
-
-            // set webapi resolver
-            var resolver = new AutofacWebApiDependencyResolver(container);
-            GlobalConfiguration.Configuration.DependencyResolver = resolver;
 
             return container;
         }
